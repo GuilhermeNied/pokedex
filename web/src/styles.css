@@ -1,0 +1,36 @@
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pokemonsContainer {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  padding: 6rem ;
+  gap: 5rem;
+}
+
+@media(max-width: 1600px) {
+  .pokemonsContainer {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+
+@media(max-width: 1200px) {
+  .pokemonsContainer {
+    grid-template-columns: 1fr 1fr ;
+  }
+}
+
+@media(max-width: 700px) {
+  .pokemonsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

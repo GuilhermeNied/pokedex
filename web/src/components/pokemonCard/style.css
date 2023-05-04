@@ -1,0 +1,22 @@
+.pokemonCardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  width: 18rem;
+  min-height: 25rem;
+  border: 1px solid transparent;
+  border-radius: 2rem;
+}
+
+.grass {
+  background-color: #64D173;
+}
+
+.fire {
+  background-color: #F56A58;
+}
+
+.water {
+  background-color: #3AB5D6;
+}
