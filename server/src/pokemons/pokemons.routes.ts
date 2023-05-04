@@ -6,7 +6,7 @@ export const router = Router();
 
 const pokemonService = new PokemonsService();
 
-router.get("/bff/pokemons", (req, res) => {
-  const pokemons = pokemonService.getPokemons();
+router.get("/bff/pokemons", async (req, res) => {
+  const pokemons = await pokemonService.getPokemons();
   return res.send(pokemons);
 });
