@@ -1,21 +1,22 @@
-import { Pokemon } from "./@types/pokemon";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 
 export class PokemonsService {
   async getPokemons() {
     const details = await this.getPokemonsDetails();
     const pokemonsDetails = details.map((pokemonDetail) => {
+      const pokemonAbilities = pokemonDetail.abilities.map(
+        (ability: any) => ability.ability.name
+      );
+      const pokemonTypes = pokemonDetail.types.map(
+        (type: any) => type.type.name
+      );
       const pokemon = {
         name: pokemonDetail.name,
-        abilities: pokemonDetail.abilities.map(
-          (ability: any) => ability.ability.name
-        ),
-        types: pokemonDetail.types.map((type: any) => type.type.name),
+        abilities: pokemonAbilities,
+        types: pokemonTypes,
       };
       return pokemon;
     });
-
-    console.log(pokemonsDetails);
 
     this.getPokemonsDetails();
 
