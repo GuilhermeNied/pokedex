@@ -14,6 +14,7 @@ export class PokemonsService {
         name: pokemonDetail.name,
         abilities: pokemonAbilities,
         types: pokemonTypes,
+        sprite: pokemonDetail.sprites.front_default,
       };
       return pokemon;
     });
