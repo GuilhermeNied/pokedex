@@ -20,6 +20,7 @@ function App() {
         {
           pokemons.map((pokemon: any) => (
             <PokemonCard
+              pokemonImg={pokemon.sprite}
               name={pokemon.name}
               abilities={pokemon.abilities}
               types={pokemon.types} />

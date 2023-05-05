@@ -2,11 +2,38 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   padding: 2rem;
   width: 18rem;
   min-height: 25rem;
   border: 1px solid transparent;
   border-radius: 2rem;
+}
+
+.pokemonCardContainer div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pokemonCardContainer img {
+  width: 7rem;
+  height: 7rem;
+}
+
+.pokemonCardContainer ul {
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+ 
+
+.pokemonCardContainer .abilitiesContainer {
+
 }
 
 .grass {
@@ -19,4 +46,52 @@
 
 .water {
   background-color: #3AB5D6;
+}
+
+.bug {
+  background-color: #7ED194;
+}
+
+.normal {
+  background-color: #CDD1D0;
+}
+
+.ground {
+  background-color: #AB6451;
+}
+
+.electric {
+  background-color: #EBCA26;
+}
+
+.rock {
+  background-color: #965847;
+}
+
+.poison {
+  background-color: #8E78D1;
+}
+
+.psychic {
+  background-color: #8E78D1;
+}
+
+.ice {
+  background-color: #70C3D6;
+}
+
+.dragon {
+  background-color: #79D0E8;
+}
+
+.ghost {
+  background-color: #836EC2;
+}
+
+.fighting {
+  background-color: #B6BAB9;
+}
+
+.fairy {
+  background-color: #FF8295;
 }
