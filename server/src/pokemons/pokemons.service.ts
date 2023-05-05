@@ -3,31 +3,48 @@ import axios, { AxiosResponse } from "axios";
 
 export class PokemonsService {
   async getPokemons() {
-    const pokemons = await this.getPokemonsInApi();
     const details = await this.getPokemonsDetails();
-    console.log(details);
+    const pokemonsDetails = details.map((pokemonDetail) => {
+      const pokemon = {
+        name: pokemonDetail.name,
+        abilities: pokemonDetail.abilities.map(
+          (ability: any) => ability.ability.name
+        ),
+        types: pokemonDetail.types.map((type: any) => type.type.name),
+      };
+      return pokemon;
+    });
+
+    console.log(pokemonsDetails);
 
     this.getPokemonsDetails();
 
-    return pokemons;
+    return pokemonsDetails;
   }
 
   private async getPokemonsInApi() {
     const pokemons = await axios.get(
       "https://pokeapi.co/api/v2/pokemon?limit=150&offset=0"
     );
+    pokemons.data.results.map((pokemon: any, id: any) => {
+      pokemon.id = id + 1;
+    });
+
     return pokemons.data.results;
   }
 
   private async getPokemonsDetails() {
     const pokemons: [] = await this.getPokemonsInApi();
-    const pokemonsUrls: string[] = pokemons.map((pokemon: any) => pokemon.url);
-    let pokemonsDetails;
-    pokemonsUrls.map(async (pokemonUrl: string) => {
-      const details = await axios.get(pokemonUrl);
-      pokemonsDetails = details;
-      console.log(pokemonsDetails);
-    });
+    const pokemonsIds: string[] = pokemons.map((pokemon: any) => pokemon.id);
+    const pokemonsDetails = await Promise.all(
+      pokemonsIds.map((pokemonId: any) =>
+        axios
+          .get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
+          .then((res) => {
+            return res.data;
+          })
+      )
+    );
 
     return pokemonsDetails;
   }
